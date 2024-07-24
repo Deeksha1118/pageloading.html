@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Canvas Circle Rotation Animation</title>
+	<style>
+		canvas {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<h1>Canvas Circle Rotation Animation</h1>
+	<canvas id = "myCanvas" width = "400" height = "400"></canvas>
+	<script>
+		const canvas = document.getElementById('myCanvas');
+		const context = canvas.getContext('2d');
+		
+		const centerX = 200;
+		const centerY = 200;
+		const radius = 50;
+		let rotationAngle = 0;
+		
+		const gradient = context.createLinearGradient(150,150,250,250);
+		gradient.addColorStop(0, 'blue');
+		gradient.addColorStop(0.5, 'white');
+		gradient.addColorStop(1,'red');
+		context.fillStyle = gradient;
+		animate();
+		
+		function drawCircle()
+		{
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			context.save();
+			context.translate(centerX, centerY);
+			context.rotate(rotationAngle);
+			context.translate(-centerX, -centerY);
+			context.beginPath();
+			context.arc(centerX, centerY, radius, 0, 2*Math.PI);
+			context.fill();
+			context.closePath();
+			context.restore();
+		}
+		
+		function animate() 
+		{
+			rotationAngle += 0.1;
+			drawCircle();
+			requestAnimationFrame(animate);
+		}
+	</script>
+</body>
+</html>

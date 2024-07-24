@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Canvas Transformation on Mouse over</title>
+	<style>
+		canvas {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<h1>Canvas Transformation on Mouse Over</h1>
+	<canvas id="myCanvas" width="400" height="200"></canvas>
+	<script>
+		const canvas = document.getElementById('myCanvas');
+		const context = canvas.getContext('2d');
+		context.fillStyle = "blue";
+		context.fillRect(10,10,100,50);
+		canvas.addEventListener('mouseover', handleMouseOver);
+		canvas.addEventListener('mouseout', handleMouseOut);
+		
+		function handleMouseOver() 
+		{
+			context.fillStyle = "red";
+			context.clearRect(0,0,canvas.width,canvas.height);
+			context.save();
+			context.scale(2,2);
+			context.fillRect(10,10,100,50);
+			context.restore();
+		}
+		
+		function handleMouseOut()
+		{
+			context.fillStyle = "blue";
+			context.clearRect(0,0,canvas.width,canvas.height);
+			context.fillRect(10,10,100,50);
+		}
+		</script>
+</body>
+</html>

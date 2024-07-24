@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Linear Gradient</title>
+	<style>
+		svg {
+			width: 400px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Logo with Linear Gradient</h1>
+	<svg height="150" width="400">
+		<defs>
+			<linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+				<stop offset="0%" stop-color="yellow" />
+				<stop offset="100%" stop-color="red" />
+			</linearGradient>
+		</defs>
+		<ellipse cx="200" cy="70" rx="200" ry="70" fill="url(#gradient)" />
+		<text x="50%" y="45%" text-anchor="middle" font-family="Arial"
+		font-size="48" fill="white"> Vidya Vikas </text>
+	</svg>
+</body>
+</html>
